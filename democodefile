@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Grievance Cell — Static</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --card:#ffffff;
+      --accent:#0b76b8;
+      --muted:#6b7280;
+      --radius:14px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background:var(--bg);
+      color:#111827;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .container{
+      max-width:var(--max);
+      margin:32px auto;
+      padding:0 20px;
+    }
+
+    /* Header / Nav */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:28px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+    .logo{
+      width:56px;
+      height:56px;
+      border-radius:10px;
+      background:linear-gradient(135deg,var(--accent),#34a0c6);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:700;
+      font-size:20px;
+      box-shadow:0 6px 18px rgba(11,118,184,0.12);
+    }
+    nav ul{
+      list-style:none;
+      display:flex;
+      gap:12px;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    nav a{
+      text-decoration:none;
+      color:var(--muted);
+      padding:8px 12px;
+      border-radius:8px;
+      font-weight:600;
+      font-size:14px;
+    }
+    nav a:hover{background:rgba(11,118,184,0.06); color:var(--accent)}
+    .cta{
+      background:var(--accent);
+      color:white;
+      padding:8px 12px;
+      border-radius:10px;
+      font-weight:600;
+      text-decoration:none;
+    }
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(180deg, rgba(11,118,184,0.06), transparent);
+      border-radius:var(--radius);
+      padding:28px;
+      display:grid;
+      grid-template-columns:1fr 360px;
+      gap:22px;
+      align-items:center;
+    }
+    .hero h1{
+      margin:0 0 10px 0;
+      font-size:28px;
+      letter-spacing:-0.2px;
+    }
+    .hero p{margin:0 0 14px 0; color:var(--muted); line-height:1.5}
+    .hero .actions{display:flex; gap:10px; margin-top:10px}
+    .btn{
+      padding:10px 14px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      border:1px solid transparent;
+    }
+    .btn-outline{background:white; color:var(--accent); border-color:rgba(11,118,184,0.12)}
+    .hero-card{
+      background:var(--card);
+      border-radius:12px;
+      padding:16px;
+      box-shadow:0 8px 30px rgba(13,26,40,0.06);
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      align-items:flex-start;
+    }
+    .hero-card img{width:100%; border-radius:8px; object-fit:cover; height:160px}
+
+    /* Rights & Info */
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 380px;
+      gap:20px;
+      margin-top:22px;
+    }
+    .card{
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      box-shadow:0 6px 20px rgba(13,26,40,0.04);
+    }
+    .card h2{margin:0 0 10px 0; font-size:18px}
+    .muted{color:var(--muted); line-height:1.5}
+
+    /* Topics grid */
+    .topics{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:14px;
+      margin-top:18px;
+    }
+    .topic{
+      background:linear-gradient(180deg,white, #fbfdff);
+      padding:14px;
+      border-radius:10px;
+      border:1px solid rgba(15,23,42,0.03);
+      min-height:100px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .topic h3{margin:0; font-size:16px}
+    .topic p{margin:0; color:var(--muted); font-size:13px}
+
+    /* Collapsible sections (using <details>) */
+    details{
+      background:#fff;
+      border-radius:10px;
+      padding:12px 14px;
+      border:1px solid rgba(11,118,184,0.06);
+      margin-bottom:12px;
+    }
+    summary{cursor:pointer; font-weight:600; outline:none}
+    details[open] summary{color:var(--accent)}
+
+    /* Contact / Footer */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:18px;
+      margin-top:18px;
+      align-items:start;
+    }
+    .contact-list{display:flex; flex-direction:column; gap:8px}
+    .small{font-size:13px; color:var(--muted)}
+
+    footer{
+      margin-top:28px;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+      padding:28px 0 60px;
+    }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .two-col{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a class="brand" href="#">
+        <div class="logo">GC</div>
+        <div>
+          <div style="font-weight:700">GRIEVANCE CELL</div>
+          <div class="small">Your Voice, Our Action</div>
+        </div>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#concerns">Concerns</a></li>
+          <li><a href="#report">Report</a></li>
+          <li><a href="#docs">Documentation</a></li>
+          <li><a class="cta" href="#report">Report Issue</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home" aria-label="Hero">
+      <div>
+        <h1>How can we help you?</h1>
+        <p class="muted">Every student's voice matters. Use this portal to raise academic, financial, disciplinary, safety or other concerns — we will review and act fairly and transparently.</p>
+
+        <div class="actions">
+          <a class="btn cta" href="#report">Report a Concern</a>
+          <a class="btn btn-outline" href="#docs">Documentation</a>
+        </div>
+
+        <!-- Quick highlights -->
+        <div style="display:flex; gap:10px; margin-top:18px">
+          <div class="card" style="flex:1; min-width:160px">
+            <strong>Student's Rights</strong>
+            <div class="small muted">Information about protections and laws (RTE, UGC anti-ragging, POSH).</div>
+          </div>
+          <div class="card" style="width:180px; text-align:center">
+            <strong>Visit Help Center</strong>
+            <div class="small muted">Schedule an in-person appointment</div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-hidden="false">
+        <!-- Replace with actual image -->
+        <img src="https://via.placeholder.com/400x160.png?text=Grievance+Help" alt="Grievance help">
+        <strong>Get help on the following topics</strong>
+        <p class="small muted" style="margin:6px 0 0">Financial issues, Disciplinary concerns, Feedback & suggestions, Harassment complaints.</p>
+      </aside>
+    </section>
+
+    <!-- Two column: rights + topics -->
+    <div class="two-col">
+      <div class="card">
+        <h2>STUDENT'S RIGHTS under Indian Law</h2>
+        <p class="muted">In India, students are protected by several laws that safeguard the right to education, equality, dignity and safety. The Right to Education Act, UGC anti-ragging regulations and the POSH Act (Prevention of Sexual Harassment) are a few examples. If your rights are violated, report it here — all cases are handled confidentially.</p>
+
+        <div style="margin-top:12px">
+          <h3 style="margin:0 0 6px 0">Quick links</h3>
+          <ul style="margin:6px 0 0 18px; color:var(--muted)">
+            <li>UGC Anti-Ragging Regulations</li>
+            <li>POSH Complaint Procedure</li>
+            <li>Fee & Scholarship Grievances</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Topics</h2>
+        <div class="topics" id="concerns">
+          <div class="topic">
+            <h3>Financial & Fee-Related Help</h3>
+            <p class="small muted">Scholarships, fee disputes, refunds, payment errors.</p>
+          </div>
+          <div class="topic">
+            <h3>Disciplinary & Behavioral</h3>
+            <p class="small muted">Harassment, ragging, faculty misconduct.</p>
+          </div>
+          <div class="topic">
+            <h3>Suggestion & Feedback</h3>
+            <p class="small muted">Curriculum ideas, campus improvements.</p>
+          </div>
+          <div class="topic">
+            <h3>Safety & Welfare</h3>
+            <p class="small muted">On-campus safety, medical or counselling needs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Collapsible sections (Section 1..5 content placeholders) -->
+    <div style="margin-top:20px">
+      <h2 style="margin-bottom:8px">Sections</h2>
+
+      <details open>
+        <summary>Section 1 — How to raise a concern</summary>
+        <div style="margin-top:10px" class="small muted">
+          <ol>
+            <li>Step 1 — Describe the issue briefly with dates, people involved and location.</li>
+            <li>Step 2 — Attach supporting files if any (receipts, screenshots, documents).</li>
+            <li>Step 3 — Submit. The grievance cell will acknowledge within the stated timeline.</li>
+          </ol>
+        </div>
+      </details>
+
+      <details>
+        <summary>Section 2 — Confidentiality & process</summary>
+        <div style="margin-top:10px" class="small muted">
+          <p>All complaints are treated confidentially. A case officer is assigned, evidence is reviewed and decisions are communicated in writing.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Section 3 — What we cannot do</summary>
+        <div style="margin-top:10px" class="small muted">
+          <p>Legal matters that require police or courts will be forwarded to the proper authorities and handled as per law.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Section 4 — Support services</summary>
+        <div style="margin-top:10px" class="small muted">
+          <p>Counselling and support referrals are available for students who need them.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Section 5 — FAQs</summary>
+        <div style="margin-top:10px" class="small muted">
+          <p>Common Qs: How long does review take? Who can file? Are anonymous complaints accepted? (Customize answers here.)</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Contact and Report -->
+    <section class="contact-grid" id="report">
+      <div class="card">
+        <h2>Report a Concern</h2>
+        <p class="muted">For now use this static template. Replace the form action with your server endpoint or Google Form when you want submissions to be collected.</p>
+
+        <!-- Static example form (won't submit unless you add action) -->
+        <form action="#" method="post" onsubmit="alert('This is a static demo form — add a server endpoint or Google Form to collect submissions.'); return false;">
+          <div style="display:grid; gap:8px; grid-template-columns:1fr 1fr">
+            <input type="text" name="name" placeholder="Full name" required style="padding:10px; border-radius:8px; border:1px solid #e6edf3">
+            <input type="text" name="roll" placeholder="Roll / ID" style="padding:10px; border-radius:8px; border:1px solid #e6edf3">
+          </div>
+          <div style="margin-top:8px">
+            <input type="email" name="email" placeholder="Email" required style="width:100%; padding:10px; border-radius:8px; border:1px solid #e6edf3">
+          </div>
+          <div style="margin-top:8px">
+            <select name="topic" style="width:100%; padding:10px; border-radius:8px; border:1px solid #e6edf3">
+              <option value="">Select topic</option>
+              <option>Financial & Fee</option>
+              <option>Disciplinary</option>
+              <option>Harassment</option>
+              <option>Suggestion</option>
+            </select>
+          </div>
+          <div style="margin-top:8px">
+            <textarea name="details" rows="5" placeholder="Describe your concern (what happened, when, where, who was involved)..." style="width:100%; padding:10px; border-radius:8px; border:1px solid #e6edf3"></textarea>
+          </div>
+
+          <div style="display:flex; gap:10px; margin-top:10px;">
+            <button class="btn cta" type="submit">Submit</button>
+            <button type="reset" class="btn btn-outline">Reset</button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="card">
+        <h3>Contact & Support</h3>
+        <div class="contact-list">
+          <div><strong>Email</strong><div class="small muted">grievance@example.edu</div></div>
+          <div><strong>Phone</strong><div class="small muted">+91 99999 99999</div></div>
+          <div><strong>Office</strong><div class="small muted">Complaints & Support Center, Campus Building</div></div>
+        </div>
+
+        <div style="margin-top:12px">
+          <h4 style="margin:0 0 6px 0">Operating Hours</h4>
+          <div class="small muted">Mon - Fri: 10:00 AM — 5:00 PM</div>
+        </div>
+      </aside>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Grievance Cell — All rights reserved. Built as a static demo.
+    </footer>
+  </div>
+
+  <script>
+    // small helpers
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
